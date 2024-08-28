@@ -1,0 +1,2 @@
+# Referenced at /storage/emulated/0/Android/data/com.tiecode.develop/files/projects/DevicesInfo/app/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15
+-keep class cn.qfys521.info.MainActivity { <init>(); }
