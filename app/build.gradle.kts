@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "cn.qfys521.deviceinfos"
-        minSdk = 32
+        minSdk = 24
         //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1

@@ -37,7 +37,7 @@ class Main : Activity() {
         }
         val textView = TextView(this)
         val button = Button(this).apply {
-            text = "操作"
+            text = "Action"
         }
         val sb = StringBuilder()
 
@@ -45,8 +45,6 @@ class Main : Activity() {
         val statFs = StatFs(Environment.getExternalStorageDirectory().path)
         val totalSize = statFs.totalBytes
         val availableSize = statFs.availableBytes
-
-
 
         sb.appendDeviceInfo()
         sb.appendMemoryInfo()
@@ -72,14 +70,14 @@ class Main : Activity() {
     }
 
     private fun StringBuilder.appendDeviceInfo() {
-        append("设备名称: ").append(deviceName).append("\n")
-            .append("设备型号: ").append(modelName).append("\n")
-            .append("系统版本: ").append(systemVersion).append("\n")
-            .append("厂商: ").append(brand).append("\n")
-            .append("制造商: ").append(manufacturer).append("\n")
-            .append("SDK版本: ").append(sDKVersion).append("\n")
-            .append("系统语言: ").append(systemLanguage).append("\n")
-            .append("支持的ABI列表: ").append(Build.SUPPORTED_ABIS.contentToString()).append("\n")
+        append("Device Name: ").append(deviceName).append("\n")
+            .append("Model: ").append(modelName).append("\n")
+            .append("OS Version: ").append(systemVersion).append("\n")
+            .append("Brand: ").append(brand).append("\n")
+            .append("Manufacturer: ").append(manufacturer).append("\n")
+            .append("SDK Version: ").append(sDKVersion).append("\n")
+            .append("System Language: ").append(systemLanguage).append("\n")
+            .append("Supported ABIs: ").append(Build.SUPPORTED_ABIS.contentToString()).append("\n")
     }
 
     @SuppressLint("ServiceCast")
@@ -88,18 +86,18 @@ class Main : Activity() {
         val memoryInfo = ActivityManager.MemoryInfo()
         activityManager.getMemoryInfo(memoryInfo)
         val mmr = memoryInfo.totalMem / (1024 * 1024)
-        append("设备内存: ").append(mmr / 1024).append(".").append(mmr % 1024).append("GB").append("\n")
+        append("Device Memory: ").append(mmr / 1024).append(".").append(mmr % 1024).append("GB").append("\n")
     }
 
     private fun StringBuilder.appendStorageInfo(totalSize: Long, availableSize: Long) {
-        append("总存储: ").append(getUnit(totalSize.toDouble())).append("\n")
-        append("已用大小: ").append(getUnit(availableSize.toDouble())).append("\n")
-        append("可用大小: ").append(getUnit((totalSize - availableSize).toDouble())).append("\n")
+        append("Total Storage: ").append(getUnit(totalSize.toDouble())).append("\n")
+        append("Used Size: ").append(getUnit(availableSize.toDouble())).append("\n")
+        append("Available Size: ").append(getUnit((totalSize - availableSize).toDouble())).append("\n")
     }
 
     private fun StringBuilder.appendFileInfo(context: Context) {
-        append("当前路径下的文件列表: ").append(context.fileList().contentToString()).append("\n")
-        append("当前文件路径: ").append(context.filesDir).append("\n")
+        append("File list in current directory: ").append(context.fileList().contentToString()).append("\n")
+        append("Current file path: ").append(context.filesDir).append("\n")
     }
 
     private fun StringBuilder.appendCpuInfo() {
@@ -107,7 +105,7 @@ class Main : Activity() {
             val process = Runtime.getRuntime().exec("getprop ro.product.cpu.abilist64")
             val reader = BufferedReader(InputStreamReader(process.inputStream))
             val output = reader.readLine()
-            append("设备支持的架构(getprop): ").append(output).append("\n")
+            append("Supported Architectures (getprop): ").append(output).append("\n")
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -122,25 +120,23 @@ class Main : Activity() {
         val phoneSimOperatorName = telephonyManager.simOperatorName
         val phoneSimOperator = telephonyManager.simOperator
 
-
-        append("localDefaultCountryCode: ").append(localDefaultCountryCode).append("\n")
-        append("telephonyCountryCode: ").append(telephonyCountryCode).append("\n")
-        append("contextCountryCode: ").append(contextCountryCode).append("\n")
-        append("phoneSimOperatorName: ").append(phoneSimOperatorName).append("\n")
-        append("phoneSimOperator: ").append(phoneSimOperator).append("\n")
-
+        append("Local Default Country Code: ").append(localDefaultCountryCode).append("\n")
+        append("Telephony Country Code: ").append(telephonyCountryCode).append("\n")
+        append("Context Country Code: ").append(contextCountryCode).append("\n")
+        append("SIM Operator Name: ").append(phoneSimOperatorName).append("\n")
+        append("SIM Operator: ").append(phoneSimOperator).append("\n")
     }
 
     private fun showLongClickDialog(textView: TextView, sb: StringBuilder) {
         val alertDialog = AlertDialog.Builder(this)
-            .setTitle("轻轻选择您的操作")
-            .setMessage("展开或者取消")
+            .setTitle("Choose Action")
+            .setMessage("Expand or Cancel")
             .setIcon(R.mipmap.sym_def_app_icon)
-            .setPositiveButton("复制") { _, _ ->
+            .setPositiveButton("Copy") { _, _ ->
                 copyToClipboard(textView.text.toString())
             }
-            .setNegativeButton("取消", null)
-            .setNeutralButton("展开") { _, _ ->
+            .setNegativeButton("Cancel", null)
+            .setNeutralButton("Expand") { _, _ ->
                 showLanguageListDialog(textView, sb)
             }
             .create()
@@ -149,16 +145,15 @@ class Main : Activity() {
 
     private fun showLanguageListDialog(textView: TextView, sb: StringBuilder) {
         val alertDialog = AlertDialog.Builder(this)
-            .setTitle("轻轻选择您的操作")
+            .setTitle("Choose Action")
             .setMessage(systemLanguageList.contentToString())
             .setIcon(R.mipmap.sym_def_app_icon)
-            .setPositiveButton("添加") { _, _ ->
-                sb.append("支持的语言列表: ").append(systemLanguageList.contentToString())
+            .setPositiveButton("Add") { _, _ ->
+                sb.append("Supported Languages: ").append(systemLanguageList.contentToString())
                 textView.text = sb.toString()
-              //  copyToClipboard(textView.text.toString())
             }
-            .setNegativeButton("收起") { _, _ ->
-                val str = sb.toString().replaceFirst("支持的语言列表: ", "").replaceFirst(systemLanguageList.contentToString(), "")
+            .setNegativeButton("Collapse") { _, _ ->
+                val str = sb.toString().replaceFirst("Supported Languages: ", "").replaceFirst(systemLanguageList.contentToString(), "")
                 sb.clear().append(str)
                 textView.text = sb.toString()
             }
@@ -170,7 +165,7 @@ class Main : Activity() {
         val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("text", text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(this, "已复制到剪切板。", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Copied to clipboard.", Toast.LENGTH_SHORT).show()
     }
 
     private fun getUnit(size: Double): String {
