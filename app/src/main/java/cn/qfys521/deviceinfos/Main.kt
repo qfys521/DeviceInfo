@@ -1,6 +1,6 @@
 package cn.qfys521.deviceinfos
 
-import android.R
+
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityManager
@@ -8,11 +8,14 @@ import android.app.AlertDialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
-import android.telephony.SubscriptionInfo
 import android.text.method.ScrollingMovementMethod
 import android.widget.Button
 import android.widget.LinearLayout
@@ -58,6 +61,8 @@ class Main : Activity() {
         linearLayout.addView(button)
         scrollView.addView(linearLayout)
         setContentView(scrollView)
+
+        setupDynamicShortcuts()
 
         textView.setOnLongClickListener {
             showLongClickDialog(textView, sb)
@@ -111,6 +116,46 @@ class Main : Activity() {
         }
     }
 
+    private fun setupDynamicShortcuts() {
+        // 仅 Android 7.1+ 支持
+
+        val shortcutManager = getSystemService(ShortcutManager::class.java)
+
+        // 创建动态快捷方式
+        val dynamicShortcut = ShortcutInfo.Builder(this, "dynamic_settings")
+            .setShortLabel(getString(R.string.dynamic_shortcut_short))
+            .setLongLabel(getString(R.string.dynamic_shortcut_long))
+            .setIcon(Icon.createWithResource(this, R.drawable.ic_launcher_background))
+            .setIntent(
+                Intent(this, Main::class.java).apply {
+                    action = Intent.ACTION_VIEW
+                }
+            )
+            .build()
+
+        // 设置动态快捷方式（会替换所有现有的动态快捷方式）
+        shortcutManager.dynamicShortcuts = listOf(dynamicShortcut)
+    }
+
+    // 添加快捷方式到桌面（可选）
+    private fun addPinnedShortcut() {
+        val shortcutManager = getSystemService(ShortcutManager::class.java)
+
+        if (shortcutManager.isRequestPinShortcutSupported) {
+            val pinShortcut = ShortcutInfo.Builder(this, "pinned_settings")
+                .setShortLabel(getString(R.string.pinned_shortcut_label))
+                .setIcon(Icon.createWithResource(this, R.drawable.ic_launcher_background))
+                .setIntent(
+                    Intent(this, Main::class.java).apply {
+                        action = Intent.ACTION_VIEW
+                        putExtra("from_shortcut", true)
+                    }
+                )
+                .build()
+
+            shortcutManager.requestPinShortcut(pinShortcut, null)
+        }
+    }
     private fun StringBuilder.appendLocalCode(){
         val telephonyManager = getSystemService(TELEPHONY_SERVICE) as android.telephony.TelephonyManager
 
@@ -131,7 +176,7 @@ class Main : Activity() {
         val alertDialog = AlertDialog.Builder(this)
             .setTitle("Choose Action")
             .setMessage("Expand or Cancel")
-            .setIcon(R.mipmap.sym_def_app_icon)
+            .setIcon(R.mipmap.ic_launcher)
             .setPositiveButton("Copy") { _, _ ->
                 copyToClipboard(textView.text.toString())
             }
@@ -147,7 +192,7 @@ class Main : Activity() {
         val alertDialog = AlertDialog.Builder(this)
             .setTitle("Choose Action")
             .setMessage(systemLanguageList.contentToString())
-            .setIcon(R.mipmap.sym_def_app_icon)
+            .setIcon(R.mipmap.ic_launcher)
             .setPositiveButton("Add") { _, _ ->
                 sb.append("Supported Languages: ").append(systemLanguageList.contentToString())
                 textView.text = sb.toString()

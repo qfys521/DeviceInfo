@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">DeviceInfos</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="settings_shortcut_short">设置</string>
+    <string name="settings_shortcut_long">打开设备信息设置</string>
+    <string name="dynamic_shortcut_short">动态设置</string>
+    <string name="dynamic_shortcut_long">打开动态设置页面</string>
+    <string name="pinned_shortcut_label">固定设置</string>
 </resources>
