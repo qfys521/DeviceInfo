@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,13 +7,13 @@ plugins {
 
 android {
     namespace = "cn.qfys521.deviceinfos"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "cn.qfys521.deviceinfos"
-        minSdk = 24
+        minSdk = 26
         //noinspection OldTargetApi
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
