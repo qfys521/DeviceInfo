@@ -1,0 +1,67 @@
+<!-- res/values-zh/strings.xml -->
+<resources>
+    <!-- App / UI -->
+    <string name="app_name">设备信息</string>
+    <string name="title_activity_main">主界面</string>
+    <string name="settings_shortcut_short">设置</string>
+    <string name="settings_shortcut_long">打开设备信息设置</string>
+    <string name="dynamic_shortcut_short">动态设置</string>
+    <string name="dynamic_shortcut_long">打开动态设置页面</string>
+    <string name="pinned_shortcut_label">固定设置</string>
+    <string name="action_button_text">显示操作</string>
+    <string name="dialog_title">选择操作</string>
+    <string name="dialog_message">选择要执行的操作</string>
+    <string name="copy">复制</string>
+    <string name="expand">展开</string>
+    <string name="collapse">折叠</string>
+    <string name="cancel">取消</string>
+    <string name="languages_title">可用语言</string>
+    <string name="add">添加到信息</string>
+    <string name="copy_success">已复制到剪贴板</string>
+    <string name="shortcut_short">设备信息</string>
+    <string name="shortcut_long">显示设备信息</string>
+    <string name="pinned_shortcut">设备信息快捷方式</string>
+    <string name="action">操作</string>
+
+    <!-- Device Info headings -->
+    <string name="hdr_device_info">=== 设备信息 ===\n</string>
+    <string name="hdr_memory_info">=== 内存信息 ===\n</string>
+    <string name="hdr_storage_info">=== 存储信息 ===\n</string>
+    <string name="hdr_file_info">=== 文件信息 ===\n</string>
+    <string name="hdr_cpu_info">=== CPU 信息 ===\n</string>
+    <string name="hdr_localization_info">=== 本地化信息 ===\n</string>
+
+    <!-- Device Info fields -->
+    <string name="device_name">设备名称：%1$s\n</string>
+    <string name="device_model">型号：%1$s\n</string>
+    <string name="os_version">系统版本：%1$s\n</string>
+    <string name="brand">品牌：%1$s\n</string>
+    <string name="manufacturer">制造商：%1$s\n</string>
+    <string name="sdk_version">SDK 版本：%1$d\n</string>
+    <string name="system_language">系统语言：%1$s\n</string>
+    <string name="supported_abis">支持的 ABI：%1$s\n\n</string>
+
+    <!-- Memory Info -->
+    <string name="total_memory">总内存：%1$s GB\n\n</string>
+
+    <!-- Storage Info -->
+    <string name="total_storage">总存储：%1$s\n</string>
+    <string name="available_storage">可用存储：%1$s\n</string>
+    <string name="used_storage">已用存储：%1$s\n\n</string>
+
+    <!-- File Info -->
+    <string name="app_files">应用文件：%1$s\n</string>
+    <string name="files_path">文件路径：%1$s\n\n</string>
+
+    <!-- CPU Info -->
+    <string name="cpu_abis">CPU ABI：%1$s\n\n</string>
+    <string name="cpu_info_error">CPU 信息错误：%1$s\n\n</string>
+
+    <!-- Localization Info -->
+    <string name="sim_country_code">SIM 国家码：%1$s\n</string>
+    <string name="sim_operator">SIM 运营商：%1$s（%2$s）\n</string>
+    <string name="locale_country">本地国家：%1$s\n</string>
+
+    <!-- Supported languages section -->
+    <string name="supported_languages_header">\n支持的语言：\n</string>
+</resources>

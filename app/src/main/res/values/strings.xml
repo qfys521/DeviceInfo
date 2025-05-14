@@ -1,9 +1,67 @@
+<!-- res/values/strings.xml -->
 <resources>
+    <!-- App / UI -->
     <string name="app_name">DeviceInfos</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="settings_shortcut_short">设置</string>
-    <string name="settings_shortcut_long">打开设备信息设置</string>
-    <string name="dynamic_shortcut_short">动态设置</string>
-    <string name="dynamic_shortcut_long">打开动态设置页面</string>
-    <string name="pinned_shortcut_label">固定设置</string>
+    <string name="settings_shortcut_short">Settings</string>
+    <string name="settings_shortcut_long">Open Device Info Settings</string>
+    <string name="dynamic_shortcut_short">Dynamic Settings</string>
+    <string name="dynamic_shortcut_long">Open Dynamic Settings Page</string>
+    <string name="pinned_shortcut_label">Pinned Settings</string>
+    <string name="action_button_text">Show Actions</string>
+    <string name="dialog_title">Choose Action</string>
+    <string name="dialog_message">Select operation to perform</string>
+    <string name="copy">Copy</string>
+    <string name="expand">Expand</string>
+    <string name="collapse">Collapse</string>
+    <string name="cancel">Cancel</string>
+    <string name="languages_title">Available Languages</string>
+    <string name="add">Add to Info</string>
+    <string name="copy_success">Copied to clipboard</string>
+    <string name="shortcut_short">Device Info</string>
+    <string name="shortcut_long">Show Device Information</string>
+    <string name="pinned_shortcut">Device Info Shortcut</string>
+    <string name="action">Action</string>
+
+    <!-- Device Info headings -->
+    <string name="hdr_device_info">=== Device Info ===\n</string>
+    <string name="hdr_memory_info">=== Memory Info ===\n</string>
+    <string name="hdr_storage_info">=== Storage Info ===\n</string>
+    <string name="hdr_file_info">=== File Info ===\n</string>
+    <string name="hdr_cpu_info">=== CPU Info ===\n</string>
+    <string name="hdr_localization_info">=== Localization Info ===\n</string>
+
+    <!-- Device Info fields -->
+    <string name="device_name">Device Name: %1$s\n</string>
+    <string name="device_model">Model: %1$s\n</string>
+    <string name="os_version">OS Version: %1$s\n</string>
+    <string name="brand">Brand: %1$s\n</string>
+    <string name="manufacturer">Manufacturer: %1$s\n</string>
+    <string name="sdk_version">SDK Version: %1$d\n</string>
+    <string name="system_language">System Language: %1$s\n</string>
+    <string name="supported_abis">Supported ABIs: %1$s\n\n</string>
+
+    <!-- Memory Info -->
+    <string name="total_memory">Total Memory: %1$s GB\n\n</string>
+
+    <!-- Storage Info -->
+    <string name="total_storage">Total Storage: %1$s\n</string>
+    <string name="available_storage">Available Storage: %1$s\n</string>
+    <string name="used_storage">Used Storage: %1$s\n\n</string>
+
+    <!-- File Info -->
+    <string name="app_files">App Files: %1$s\n</string>
+    <string name="files_path">Files Path: %1$s\n\n</string>
+
+    <!-- CPU Info -->
+    <string name="cpu_abis">CPU ABIs: %1$s\n\n</string>
+    <string name="cpu_info_error">CPU Info Error: %1$s\n\n</string>
+
+    <!-- Localization Info -->
+    <string name="sim_country_code">SIM Country Code: %1$s\n</string>
+    <string name="sim_operator">SIM Operator: %1$s (%2$s)\n</string>
+    <string name="locale_country">Locale Country: %1$s\n</string>
+
+    <!-- Supported languages section -->
+    <string name="supported_languages_header">\nSupported Languages:\n</string>
 </resources>
