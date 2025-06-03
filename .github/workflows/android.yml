@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "*" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "*" ]
 
 jobs:
   build:
@@ -25,3 +25,11 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+        
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+    # Artifact name
+          name: build
+    # A file, directory or wildcard pattern that describes what to upload
+          path: app/build/*
